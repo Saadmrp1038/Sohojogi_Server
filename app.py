@@ -46,7 +46,8 @@ def get_user_stories():
         return jsonify({"error": "User not found"}), 404
 
     
-    story_ids = [user[1].get('storyId1'), user[1].get('storyId2'), user[1].get('storyId3')]
+    # story_ids = [user[1].get('storyId1'), user[1].get('storyId2'), user[1].get('storyId3')]
+    story_ids = [user[1].get('storyId1')]
     # print(story_ids)
 
     
@@ -117,7 +118,8 @@ def get_user_talks():
         return jsonify({"error": "User not found"}), 404
 
     
-    talk_ids = [user[1].get('talkId1'), user[1].get('talkId2'), user[1].get('talkId3')]
+    # talk_ids = [user[1].get('talkId1'), user[1].get('talkId2'), user[1].get('talkId3')]
+    talk_ids = [user[1].get('talkId1')]
     # print(talk_ids)
     
     talks = []
