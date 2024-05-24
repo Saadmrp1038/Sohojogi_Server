@@ -83,7 +83,7 @@ def get_user_stories():
     All available contents are:
     {total_Str}
 
-    Recommend 5 ids from 'All available contents' that are not already watched by the user and are most relevant to what the user has watched. Order them based on relevance. Return only the ids as a list.
+    Recommend 4 ids from 'All available contents' that are not already watched by the user and are most relevant to what the user has watched. Order them based on relevance. The more relevent result should come first. Return only the ids as a list.
     """
 
     recommended_ids_str = chat_gpt(prompt)
@@ -152,7 +152,7 @@ def get_user_talks():
     All available contents are:
     {total_Str}
 
-    Recommend 5 ids from 'All available contents' that are not already watched by the user and are most relevant to what the user has watched. Order them based on relevance. Return only the ids as a list.
+    Recommend 4 ids from 'All available contents' that are not already watched by the user and are most relevant to what the user has watched. Order them based on relevance. The more relevent result should come first. Return only the ids as a list.
     """
 
     recommended_ids_str = chat_gpt(prompt)
@@ -166,5 +166,5 @@ def get_user_talks():
 
     return jsonify(recommendations)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
