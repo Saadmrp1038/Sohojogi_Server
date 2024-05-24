@@ -93,7 +93,7 @@ def get_user_stories():
     recommendations = []
     for rec_id in recommended_ids:
         recommendation, count = supabase.table('success_story_table').select('*').eq('id', rec_id).single().execute()
-        recommendations.append(recommendation)
+        recommendations.append(recommendation[1])
 
     return jsonify(recommendations)
 
@@ -162,9 +162,9 @@ def get_user_talks():
     recommendations = []
     for rec_id in recommended_ids:
         recommendation, count = supabase.table('expert_talks').select('*').eq('id', rec_id).single().execute()
-        recommendations.append(recommendation)
+        recommendations.append(recommendation[1])
 
     return jsonify(recommendations)
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
