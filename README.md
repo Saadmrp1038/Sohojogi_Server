@@ -58,7 +58,7 @@ Replace `your_supabase_url`, `your_supabase_key`, and `your_openai_api_key` with
 1. Start the Flask application:
 
 ```bash
-flask run
+python3 main.py
 ```
 
 By default, the application will run on `http://127.0.0.1:5000/`.
