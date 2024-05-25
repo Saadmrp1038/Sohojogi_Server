@@ -48,7 +48,7 @@ def get_user_stories():
     
     # story_ids = [user[1].get('storyId1'), user[1].get('storyId2'), user[1].get('storyId3')]
     story_ids = [user[1].get('storyId1')]
-    print(story_ids)
+    # print(story_ids)
 
     
     stories = []
@@ -57,17 +57,17 @@ def get_user_stories():
     user_str = "User has watched the following contents:\n"
     for story_id in story_ids:
         if story_id is not None:
-            print(type(story_id))
+            # print(type(story_id))
             story, count = supabase.table('success_story_table').select('*').eq('id', story_id).single().execute()
             
             user_str += "id: "+str(story[1].get('id'))+" "+story[1].get('type')+" about " + story[1].get('title_eng')+"\n"
 
 
-            print(story)
+            # print(story)
             if story:
                 stories.append(story)
 
-    print(str)
+    # print(str)
 
     all_stories, count = supabase.table('success_story_table').select('*').execute()
 
@@ -75,7 +75,7 @@ def get_user_stories():
     for tstory in all_stories[1]:
         total_Str += "id: "+str(tstory.get('id'))+" "+tstory.get('type')+" about " + tstory.get('title_eng')+"\n"
 
-    print(total_Str, user_str)
+    # print(total_Str, user_str)
 
     prompt = f"""
     User has watched the following contents:
@@ -90,7 +90,7 @@ def get_user_stories():
     """
 
     recommended_ids_str = chat_gpt(prompt)
-    print(recommended_ids_str)
+    # print(recommended_ids_str)
     recommended_ids = recommended_ids_str.replace('[', '').replace(']', '').replace('\'', '').split(',')
     recommended_ids = [id.strip() for id in recommended_ids]
     
@@ -159,10 +159,11 @@ def get_user_talks():
 
     Recommend 4 ids from 'All available contents' that are not already watched by the user and are most relevant to what the user has watched. Order them based on relevance. The more relevent result should come first. Return only the ids as a list.
     For example:
-    [10, 12, 2, 5]
+    [7, 1, 2, 5]
     """
 
     recommended_ids_str = chat_gpt(prompt)
+    print(recommended_ids_str)
     recommended_ids = recommended_ids_str.replace('[', '').replace(']', '').replace('\'', '').split(',')
     recommended_ids = [id.strip() for id in recommended_ids]
     
@@ -171,9 +172,8 @@ def get_user_talks():
         recommendation, count = supabase.table('expert_talks').select('*').eq('id', rec_id).single().execute()
         recommendations.append(recommendation[1])
         
-    print(recommendation)
+    # print(recommendation)
     return jsonify(recommendations)
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
-# 
+if __name__ == '__main__':
+    app.run(debug=True)
