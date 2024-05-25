@@ -90,7 +90,12 @@ def get_user_stories():
     """
 
     recommended_ids_str = chat_gpt(prompt)
-    # print(recommended_ids_str)
+    cnt = 0
+    while recommended_ids_str[0]!='[' or recommended_ids_str[-1]!=']':
+        recommended_ids_str = chat_gpt(prompt)
+        cnt += 1
+        if cnt>5:
+            break
     recommended_ids = recommended_ids_str.replace('[', '').replace(']', '').replace('\'', '').split(',')
     recommended_ids = [id.strip() for id in recommended_ids]
     
@@ -163,7 +168,13 @@ def get_user_talks():
     """
 
     recommended_ids_str = chat_gpt(prompt)
-    print(recommended_ids_str)
+    cnt = 0
+    while recommended_ids_str[0]!='[' or recommended_ids_str[-1]!=']':
+        recommended_ids_str = chat_gpt(prompt)
+        cnt += 1
+        if cnt>5:
+            break
+    
     recommended_ids = recommended_ids_str.replace('[', '').replace(']', '').replace('\'', '').split(',')
     recommended_ids = [id.strip() for id in recommended_ids]
     
@@ -175,5 +186,5 @@ def get_user_talks():
     # print(recommendation)
     return jsonify(recommendations)
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
