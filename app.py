@@ -186,5 +186,9 @@ def get_user_talks():
     # print(recommendation)
     return jsonify(recommendations)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/test', methods=['GET'])
+def test():
+    return "Testing"
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
