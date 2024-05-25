@@ -15,7 +15,7 @@ client = OpenAI(
 
 def chat_gpt(prompt):
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo-0125",
+        model="gpt-4o",
         messages=[{"role": "user", "content": prompt}]
     )
     return response.choices[0].message.content.strip()
