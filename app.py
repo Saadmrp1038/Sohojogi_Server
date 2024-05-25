@@ -175,5 +175,5 @@ def get_user_talks():
     # print(recommendation)
     return jsonify(recommendations)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
